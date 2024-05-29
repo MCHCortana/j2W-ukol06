@@ -1,5 +1,6 @@
 [#ftl]
 [@c.page]
+
     <div class="detail">
         <div class="vizitka">
             <div class="jmeno">Dita (Přikrylová) Formánková</div>
