@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Length;
 public class Vizitka {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @NotBlank (message = "Zadejte celé jméno")
     @Pattern(regexp = "\\w+ \\w+", message = "nezapomněli jste zadat příjmení?")
     @Length(max = 100)
@@ -44,7 +44,7 @@ public class Vizitka {
     private String web;
 
     public Vizitka() {}
-    public Vizitka(int id, String celeJmeno, String firma, String ulice, String obec, String psc, String email, String telefon, String web) {
+    public Vizitka(Long id, String celeJmeno, String firma, String ulice, String obec, String psc, String email, String telefon, String web) {
         this.id = id;
         this.celeJmeno = celeJmeno;
         this.firma = firma;
@@ -56,11 +56,11 @@ public class Vizitka {
         this.web = web;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
