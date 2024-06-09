@@ -12,32 +12,39 @@ import org.hibernate.validator.constraints.Length;
 public class Vizitka {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotBlank (message = "Zadejte celé jméno")
     @Pattern(regexp = "\\w+ \\w+", message = "nezapomněli jste zadat příjmení?")
+    @Length(max = 100)
     private String celeJmeno;
     @NotBlank (message = "Zadejte společnost, kterou kontakt pracuje zastupuje.")
+    @Length(max = 100)
     private String firma;
 
     @NotBlank (message = "Zadejte ulici, na které se společnost nachází.")
+    @Length(max = 100)
     private String ulice;
 
     @NotBlank (message = "Zadejte obec, ve které se společnost nachází.")
+    @Length(max = 100)
     private String obec;
 
     @NotBlank (message = "Zadejte PSČ, uvedené obce.")
     @Length(min = 5, max = 5, message = "Zadejte PSČ ve formátu XXXXX")
     private String psc;
     @Email(message = "Zadejte email ve správném formátu.")
+    @Length(max = 100)
     private String email;
     @Pattern(regexp = "\\+?\\d+")
+    @Length(min =9, max  = 20)
     private String telefon;
 
     @NotBlank(message = "Zadejte webovou stránku kontaktu.")
+    @Length(max = 100)
     private String web;
 
     public Vizitka() {}
-    public Vizitka(Long id, String celeJmeno, String firma, String ulice, String obec, String psc, String email, String telefon, String web) {
+    public Vizitka(int id, String celeJmeno, String firma, String ulice, String obec, String psc, String email, String telefon, String web) {
         this.id = id;
         this.celeJmeno = celeJmeno;
         this.firma = firma;
@@ -49,11 +56,11 @@ public class Vizitka {
         this.web = web;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -95,6 +102,9 @@ public class Vizitka {
 
     public void setPsc(String psc) {
         this.psc = psc;
+    }
+    public final String getCelaAdresa() {
+        return this.ulice + " " + this.obec + " " + this.psc;
     }
 
     public String getEmail() {

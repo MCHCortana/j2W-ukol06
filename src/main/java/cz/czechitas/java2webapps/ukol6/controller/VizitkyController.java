@@ -23,9 +23,11 @@ public class VizitkyController {
     }
 
     @GetMapping("/")
-    public ModelAndView vizitkySeznam() {
+    public ModelAndView seznam() {
         return new ModelAndView("seznam")
-                .addObject("vizitka", vizitkaRepository.findAll());
+                .addObject("seznamVizitek", vizitkaRepository.findAll());
     }
+
+
 
 }
