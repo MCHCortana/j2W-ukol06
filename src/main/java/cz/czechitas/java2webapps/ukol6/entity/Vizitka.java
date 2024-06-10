@@ -34,7 +34,7 @@ public class Vizitka {
     private String obec;
 
     @NotBlank (message = "Zadejte PSČ, uvedené obce.")
-    @Length(min = 5, max = 5, message = "Zadejte PSČ ve formátu XXXXX")
+    @Pattern(regexp = "\\d{5}", message = "Zadejte PSČ ve formátu XXXXX")
     private String psc;
     @Email(message = "Zadejte email ve správném formátu.")
     @Length(max = 100)
