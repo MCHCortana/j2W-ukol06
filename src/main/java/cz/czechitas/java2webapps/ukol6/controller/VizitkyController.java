@@ -35,8 +35,8 @@ public class VizitkyController {
     }
 
     @GetMapping("/vizitka/{id}")
-    public ModelAndView detail(@PathVariable Long id) {
-        Optional<Vizitka> jednaVizitka = vizitkaRepository.findById(id + 1);
+    public ModelAndView detail(Long id) {
+        Optional<Vizitka> jednaVizitka = vizitkaRepository.findById(id);
         if (jednaVizitka.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -44,18 +44,24 @@ public class VizitkyController {
                 .addObject("jednavizitka", jednaVizitka.get());
     }
 
-    @GetMapping("/nova")
+    @GetMapping("/novaVizitka")
     public ModelAndView nova() {
         return new ModelAndView("formular").
-                addObject("nova", new Vizitka());
+                addObject("vizitka", new Vizitka());
     }
-    @PostMapping("/novy")
+    @PostMapping("/novaVizitka")
     public String pridat(@ModelAttribute("vizitka") @Valid Vizitka vizitka, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "vizitka";
+            return "formular";
         }
         vizitka.setId(null);
         vizitkaRepository.save(vizitka);
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete")
+    public String deleteVizitka(Long id) {
+        vizitkaRepository.deleteById(id + 1);
         return "redirect:/";
     }
 

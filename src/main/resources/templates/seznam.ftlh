@@ -39,7 +39,7 @@
             </a>
         [/#items]
 
-        <a href="/nova">
+        <a href="/novaVizitka">
             <div class="vizitka vizitka--nova">
                 <svg width="100" height="100">
                     <rect width="20" height="100" x="40" y="0" fill="white"/>

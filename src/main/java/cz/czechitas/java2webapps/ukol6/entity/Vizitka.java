@@ -6,15 +6,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
+
 @Entity
 public class Vizitka {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank (message = "Zadejte celé jméno")
-    @Pattern(regexp = "\\w+ \\w+", message = "nezapomněli jste zadat příjmení?")
+    @NotNull(message = "wtf")
+//    @Pattern(regexp = "(?i)\\w+\\s+\\w+", message = "Nezapomněli jste zadat příjmení?")
     @Length(max = 100)
     private String celeJmeno;
     @NotBlank (message = "Zadejte společnost, kterou kontakt pracuje zastupuje.")
@@ -39,8 +43,8 @@ public class Vizitka {
     @Length(min =9, max  = 20)
     private String telefon;
 
-    @NotBlank(message = "Zadejte webovou stránku kontaktu.")
     @Length(max = 100)
+//    @URL(message = "Zadejte webovou stránku")
     private String web;
 
     public Vizitka() {}
