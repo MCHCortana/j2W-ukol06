@@ -3,9 +3,9 @@
     [#list seznamVizitek]
     <div class="seznam">
         [#items as vizitka]
-            <a href="/vizitka/${vizitka?index}">
+            <a href="/vizitka/${vizitka.id}">
                 <div class="vizitka">
-                    <form method="post" action="/delete"><input type="hidden" name="id" value="${vizitka?index}"/>
+                    <form method="post" action="/delete"><input type="hidden" name="id" value="${vizitka.id}"/>
                         <div class="vymazat">
                             <button class="btn btn-primary"><i class="bi bi-trash"></i></button>
                         </div>

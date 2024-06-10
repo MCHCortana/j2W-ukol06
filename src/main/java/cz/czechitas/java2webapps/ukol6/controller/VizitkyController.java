@@ -35,7 +35,7 @@ public class VizitkyController {
     }
 
     @GetMapping("/vizitka/{id}")
-    public ModelAndView detail(Long id) {
+    public ModelAndView detail(@PathVariable Long id) {
         Optional<Vizitka> jednaVizitka = vizitkaRepository.findById(id);
         if (jednaVizitka.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -64,6 +64,4 @@ public class VizitkyController {
         vizitkaRepository.deleteById(id + 1);
         return "redirect:/";
     }
-
-
 }

@@ -2,6 +2,11 @@
 [@c.page]
     <div class="detail">
         <div class="vizitka">
+            <form method="post" action="/delete"><input type="hidden" name="id" value="${vizitka.id}"/>
+                <div class="vymazat">
+                    <button class="btn btn-primary"><i class="bi bi-trash"></i></button>
+                </div>
+            </form>
             <div class="jmeno">${jednavizitka.celeJmeno} </div>
             <div class="firma">${jednavizitka.firma}</div>
             <div class="udaje">
