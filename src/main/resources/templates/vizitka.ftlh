@@ -2,11 +2,16 @@
 [@c.page]
     <div class="detail">
         <div class="vizitka">
-            <form method="post" action="/delete"><input type="hidden" name="id" value="${jednavizitka.id}"/>
-                <div class="vymazat">
-                    <button class="btn btn-primary"><i class="bi bi-trash"></i></button>
-                </div>
-            </form>
+            <div class="btn-group_delete_edit">
+                <form method="post" action="/delete"><input type="hidden" name="id" value="${jednavizitka.id}"/>
+                    <div class="vymazat">
+                        <button class="btn btn-primary"><i class="bi bi-trash"></i></button>
+                    </div>
+                </form>
+                <a href="/edit/${jednavizitka.id}">
+                    <button class="btn btn-primary"><i class="bi bi-pen"></i></button>
+                </a>
+            </div>
             <div class="jmeno">${jednavizitka.celeJmeno} </div>
             <div class="firma">${jednavizitka.firma}</div>
             <div class="udaje">

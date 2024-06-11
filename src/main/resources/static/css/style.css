@@ -27,9 +27,15 @@ a {
     flex-wrap: wrap;
     padding: 2em;
 }
+
+.btn-group_delete_edit{
+    display:flex;
+    gap:0.5rem;
+}
 .vymazat {
     display: inline-block;
 }
+
 .vizitka {
     width: 36em;
     height: 18em;
