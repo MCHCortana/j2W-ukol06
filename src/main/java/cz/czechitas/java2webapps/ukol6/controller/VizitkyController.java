@@ -6,7 +6,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -66,15 +65,17 @@ public class VizitkyController {
         vizitkaRepository.deleteById(id);
         return "redirect:/";
     }
-@GetMapping("/edit/{id}")
-        public ModelAndView editID (@PathVariable Long id){
-    Optional<Vizitka> jednaVizitka = vizitkaRepository.findById(id);
-    if (jednaVizitka.isEmpty()) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView editID(@PathVariable Long id) {
+        Optional<Vizitka> jednaVizitka = vizitkaRepository.findById(id);
+        if (jednaVizitka.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         return new ModelAndView("formular").
                 addObject("vizitka", jednaVizitka.get());
     }
+
     @PostMapping("/edit/{id}")
     public String edit(@ModelAttribute("vizitka") @Valid Vizitka vizitka, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
