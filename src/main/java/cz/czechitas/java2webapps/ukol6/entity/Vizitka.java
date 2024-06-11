@@ -9,45 +9,46 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 @Entity
 public class Vizitka {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank (message = "Zadejte celé jméno")
+    @NotBlank(message = "Zadejte celé jméno")
     @NotNull(message = "wtf")
 //    @Pattern(regexp = "(?i)\\w+\\s+\\w+", message = "Nezapomněli jste zadat příjmení?")
     @Length(max = 100)
     private String celeJmeno;
-    @NotBlank (message = "Zadejte společnost, kterou kontakt pracuje zastupuje.")
+    @NotBlank(message = "Zadejte společnost, kterou kontakt pracuje zastupuje.")
     @Length(max = 100)
     private String firma;
 
-    @NotBlank (message = "Zadejte ulici, na které se společnost nachází.")
+    @NotBlank(message = "Zadejte ulici, na které se společnost nachází.")
     @Length(max = 100)
     private String ulice;
 
-    @NotBlank (message = "Zadejte obec, ve které se společnost nachází.")
+    @NotBlank(message = "Zadejte obec, ve které se společnost nachází.")
     @Length(max = 100)
     private String obec;
 
-    @NotBlank (message = "Zadejte PSČ, uvedené obce.")
+    @NotBlank(message = "Zadejte PSČ, uvedené obce.")
     @Pattern(regexp = "\\d{5}", message = "Zadejte PSČ ve formátu XXXXX")
     private String psc;
     @Email(message = "Zadejte email ve správném formátu.")
     @Length(max = 100)
     private String email;
     @Pattern(regexp = "\\+?\\d+")
-    @Length(min =9, max  = 20)
+    @Length(min = 9, max = 20)
     private String telefon;
 
     @Length(max = 100)
 //    @URL(message = "Zadejte webovou stránku")
     private String web;
 
-    public Vizitka() {}
+    public Vizitka() {
+    }
+
     public Vizitka(Long id, String celeJmeno, String firma, String ulice, String obec, String psc, String email, String telefon, String web) {
         this.id = id;
         this.celeJmeno = celeJmeno;
@@ -107,6 +108,7 @@ public class Vizitka {
     public void setPsc(String psc) {
         this.psc = psc;
     }
+
     public final String getCelaAdresa() {
         return this.ulice + " " + this.obec + " " + this.psc;
     }

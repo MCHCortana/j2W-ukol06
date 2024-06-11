@@ -49,6 +49,7 @@ public class VizitkyController {
         return new ModelAndView("formular").
                 addObject("vizitka", new Vizitka());
     }
+
     @PostMapping("/novaVizitka")
     public String pridat(@ModelAttribute("vizitka") @Valid Vizitka vizitka, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -61,7 +62,7 @@ public class VizitkyController {
 
     @PostMapping("/delete")
     public String deleteVizitka(Long id) {
-        vizitkaRepository.deleteById(id + 1);
+        vizitkaRepository.deleteById(id);
         return "redirect:/";
     }
 }
