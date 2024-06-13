@@ -28,12 +28,37 @@ a {
     padding: 2em;
 }
 
-.btn-group_delete_edit{
-    display:flex;
-    gap:0.5rem;
+.btn-group_delete_edit {
+    display: flex;
+    gap: 0.5rem;
 }
+
 .vymazat {
     display: inline-block;
+}
+
+.edit-delete{
+    padding: 0.3rem;
+    padding-bottom:0.1rem;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    background-color: white;
+    flex-direction: column;
+}
+
+.edit-delete--form{
+    width:100%;
+    padding:0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.edit-delete--form .row{
+    margin: 0;
 }
 
 .vizitka {

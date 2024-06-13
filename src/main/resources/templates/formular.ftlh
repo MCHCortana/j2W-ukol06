@@ -14,6 +14,17 @@
                 <button type="submit">Odeslat</button>
             </div>
         [/@form.form]
-        [@c.back /]
+        [#if vizitka.id??]
+            <div class="edit-delete">
+                [@form.form method="post" action="/delete"  class="edit-delete--form" bind="vizitka"]
+                    [@form.input name="id" type="hidden" value="${vizitka.id}" label="Smazat záznam" /]
+                    <div class="form-controls">
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-trash"></i></button>
+                    </div>
+                [/@form.form]
+            </div>
+        [/#if]
+
     </div>
+    [@c.back /]
 [/@c.page]
