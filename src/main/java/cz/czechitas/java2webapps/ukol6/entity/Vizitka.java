@@ -16,7 +16,6 @@ public class Vizitka {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "Zadejte celé jméno")
-    @NotNull(message = "wtf")
 //    @Pattern(regexp = "(?i)\\w+\\s+\\w+", message = "Nezapomněli jste zadat příjmení?")
     @Length(max = 100)
     private String celeJmeno;
